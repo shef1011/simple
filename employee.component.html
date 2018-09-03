@@ -1,0 +1,11 @@
+<h3>Class Binding Example</h3>
+<br/>
+<button class="colorClass" [class]='classesToApply'>Click Me</button>   <!--This type of binding replaces existing css and applies new css-->
+<br/>
+<button class="colorClass italicsClass boldClass" [class.boldClass]='applyBold'>My Button</button>
+<br/><br/>
+<button class="colorClass" [ngClass]='apply()'>Click Me</button>
+<br/><br/>
+<button (click)="onclick()">Save</button>
+<br/><br/>
+<input [(ngModel)]="email" (keyup.enter)="onclick()"/>

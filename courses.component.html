@@ -1,0 +1,74 @@
+<div class="parallax" (click)="func()">
+<h1 style="text-align:center">Welcome to {{title}}</h1>
+    <!--<ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#" (click)="getcourses()">Show</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#" (click)="toggleDetails()">Hide</a></li>
+    </ul>-->
+    <div *ngIf="look" class="btn-group"> 
+        <button type="button" class="btn btn-primary" (click)="clicked()">Register</button>
+        <button type="button" class="btn btn-primary" (click)="data()">Login</button>
+    </div>
+<br/><br/><br/>
+<table *ngIf="showcourses">
+    <thead>
+        <tr>
+            <th [attr.colspan]='colSpan'>CourseId</th>
+            <th [attr.colspan]='colSpan'>CourseName</th>
+            <th [attr.colspan]='colSpan'>Price</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let course of courses1">
+      <td [attr.colspan]='colSpan'>{{course.course_id}}</td> 
+      <td [attr.colspan]='colSpan'>{{course.course_name}}</td> 
+      <td [attr.colspan]='colSpan'>{{course.price}}</td>  
+    </tr>
+</table>
+<div *ngIf='login' class="container">
+    <div class="jumbotron">
+        <form #g="ngForm">
+            <div class="form-group">
+                <label id="Username">Username</label>
+                <input name="Username" type="text" class="form-control" ngModel #Username='ngModel' required>
+            </div>
+            <div class="form-group">
+                    <label id="pass">Password</label>
+                    <input name="pass" type="password" class="form-control" ngModel #pass='ngModel' required>
+            </div>
+            <button class="btn btn-success" [disabled]="g.invalid">Login</button>
+        </form>
+    </div>
+</div>
+<div *ngIf='register' class="container">
+<div class="jumbotron">
+<form #frm="ngForm">
+    <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" class="form-control" ngModel name="firstName" #firstName="ngModel" required>
+    </div>
+  <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid"> First Name is required</div>
+    <div class="form-group">
+    <label for="LastName">Last Name</label>
+    <input id="LastName" type="text" class="form-control" ngModel name="LastName" #LastName="ngModel" required>
+    </div>
+  <div class="alert alert-danger" *ngIf="LastName.touched && LastName.invalid">Last Name is required</div>
+  <div class="form-group">
+    <label for="Email">Email</label>
+    <input id="Email" type="text" class="form-control" ngModel name="Email" #Email="ngModel" required>
+</div>
+<div class="alert alert-danger" *ngIf="Email.touched && Email.invalid">Email is required</div>
+<div class="form-group">
+    <label for="pass">Password</label>
+    <input id="pass" type="password" class="form-control" ngModel name="pass" #pass="ngModel"  required>
+</div>
+<div class="alert alert-danger" *ngIf="pass.touched && pass.invalid">Password is required</div>
+ <div class="checkbox">
+    <label>
+    <input type="checkbox" ngModel name="subscribe" required>Remember me</label>
+ </div>
+ <div class="alert alert-danger" *ngIf="passw.touched && passw.invalid">Password is required</div>
+ <button class="btn btn-success" [disabled]="frm.invalid">Register</button>
+</form>
+</div>
+</div>
+</div>
